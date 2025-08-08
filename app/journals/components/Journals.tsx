@@ -254,7 +254,7 @@ export default function ScientificJournals() {
         </p>
         <div className="flex items-center justify-end my-8">
           {/* Category Filter Dropdown */}
-          <div className="relative flex  items-end [@media(min-width:1540px)]:mr-[5%]">
+          <div className="relative flex  items-end ">
             <select
               value={activeCategory}
               onChange={(e) => handleCategoryChange(e.target.value)}
@@ -333,7 +333,7 @@ const formatJournalTitle = (title: string) => {
   if (parts.length === 2) {
     return (
       <div className="flex flex-col">
-        <span className="text-[14px]  [@media(min-width:1540px)]:text-[1.3rem] text-[#283E61] whitespace-normal">
+        <span className="text-[14px]   text-[#283E61] whitespace-normal">
           Scientific Results in {parts[1]}
         </span>
       </div>

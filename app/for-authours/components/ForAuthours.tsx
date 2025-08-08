@@ -230,15 +230,15 @@ export default function ForAuthours() {
               aria-label={`${service.title}: ${service.description}`}
             >
               <div className="flex flex-col gap-2 mb-4">
-                <div className={`inline-flex items-center justify-center w-10 h-10 [@media(min-width:1540px)]:w-12 [@media(min-width:1540px)]:h-12 rounded-lg mb-2 ${service.color}`}>
+                <div className={`inline-flex items-center justify-center w-10 h-10  rounded-lg mb-2 ${service.color}`}>
                   <service.icon
-                    className="w-5 h-5 [@media(min-width:1540px)]:w-6 [@media(min-width:1540px)]:h-6"
+                    className="w-5 h-5 "
                     aria-hidden="true"
                   />
                 </div>
   
                 <h3
-                  className="text-[20px] [@media(min-width:1540px)]:text-[24px] font-semibold
+                  className="text-[20px]  font-semibold
                   text-[#272727]"
                 >
                   {service.title}
@@ -246,7 +246,7 @@ export default function ForAuthours() {
               </div>
               <p
                 className="leading-relaxed text-base md:text-lg
-                text-[#49648E] [@media(min-width:1540px)]:text-[20px]"
+                text-[#49648E] "
               >
                 {service.description}
               </p>
