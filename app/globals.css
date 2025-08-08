@@ -1,0 +1,434 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+:root {
+  --text: #0f172a;
+}
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-yale_blue-900 antialiased font-serif;
+  }
+  
+  /* Улучшение доступности */
+  :focus {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+
+  /* Скрытие элементов для скринридеров */
+  .sr-only {
+    @apply absolute w-px h-px p-0 -m-px overflow-hidden whitespace-nowrap border-0;
+  }
+
+  /* Улучшенный контраст для текста */
+  .high-contrast {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  /* Улучшенные состояния интерактивных элементов */
+  button:focus-visible,
+  a:focus-visible {
+    @apply ring-2 ring-offset-2 ring-blue-500;
+  }
+
+  /* Адаптивная типографика */
+  @media (max-width: 640px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif font-bold leading-tight mb-4;
+    line-height: 1.2;
+  }
+
+  /* Improved text spacing for readability */
+  p {
+    @apply mb-4;
+    line-height: 1.6;
+  }
+
+  /* Better focus styles for accessibility */
+  button:focus,
+  a:focus,
+  input:focus,
+  select:focus,
+  textarea:focus {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+
+  /* Smooth scroll for all anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1280px;
+  }
+
+  .btn {
+    @apply px-6 py-2 rounded-lg font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-yale_blue-500 text-white hover:bg-yale_blue-600;
+  }
+
+  .btn-secondary {
+    @apply bg-powder_blue-500 text-yale_blue-900 hover:bg-powder_blue-600;
+  }
+
+  .menu-item {
+    @apply relative overflow-hidden;
+  }
+
+  .menu-item::before {
+    content: "";
+    @apply absolute left-0 top-0 h-full w-[2px] bg-yale_blue-500 
+      transform -translate-y-full transition-transform duration-300;
+  }
+
+  .menu-item:hover::before {
+    @apply translate-y-0;
+  }
+
+  .menu-item::after {
+    content: "";
+    @apply absolute inset-0 bg-yale_blue-50 opacity-0 -z-10 
+      transition-opacity duration-300;
+  }
+
+  .menu-item:hover::after {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .section {
+    @apply py-12 md:py-24;
+  }
+
+  /* Standardized Hero CTA buttons */
+  .hero-cta {
+    @apply px-8 py-4 rounded-full font-medium text-lg transition-all duration-200 ease-in-out;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply min-w-[180px] h-[56px] flex items-center justify-center;
+  }
+
+  .hero-cta--primary {
+    @apply bg-[#283E61] text-white border-2 border-[#283E61];
+    @apply hover:bg-[#1F304A] hover:border-[#1F304A];
+    @apply focus:ring-[#283E61];
+  }
+
+  .hero-cta--secondary {
+    @apply bg-transparent text-[#283E61] border-2 border-[#283E61];
+    @apply hover:bg-[#283E61] hover:text-white;
+    @apply focus:ring-[#283E61];
+  }
+
+  /* Enhanced card styles */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Consistent button styles */
+  .btn-primary {
+    @apply bg-[#283E61] text-white px-6 py-3 rounded-full font-medium;
+    @apply hover:bg-[#1F304A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#283E61];
+    @apply transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-[#283E61] border-2 border-[#283E61] px-6 py-3 rounded-full font-medium;
+    @apply hover:bg-[#283E61] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#283E61];
+    @apply transition-all duration-200;
+  }
+
+  /* Performance optimizations */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Skip link for accessibility */
+  .skip-link {
+    @apply absolute -top-40 left-6 bg-[#283E61] text-white px-4 py-2 rounded;
+    @apply focus:top-6 transition-all duration-200;
+    z-index: 9999;
+  }
+}
+
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/*houdini*/
+@property --blink-opacity {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 1;
+}
+
+@layer utilities {
+  .h-mobile-chat {
+    height: calc(var(--vh, 1vh) * 100 - 5rem);
+  }
+}
+
+@keyframes blink-animation {
+  0%,
+  100% {
+    opacity: var(--blink-opacity, 1);
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+:root {
+  font-family: serif;
+
+  --stripe-color: #fff;
+  --bg: var(--stripe-color);
+  --maincolor: var(--bg);
+}
+
+/*custom*/
+
+@keyframes smoothBg {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  --stripes: repeating-linear-gradient(
+    100deg,
+    var(--stripe-color) 0%,
+    var(--stripe-color) 7%,
+    transparent 10%,
+    transparent 12%,
+    var(--stripe-color) 16%
+  );
+
+  --rainbow: repeating-linear-gradient(
+    100deg,
+    #0a2463 10%,
+    /* yale_blue-900 */ #184693 15%,
+    /* yale_blue-800 */ #2468c5 20%,
+    /* yale_blue-600 */ #3482f6 25%,
+    /* yale_blue-500 */ #0a2463 30% /* yale_blue-900 */
+  );
+  background-image: var(--stripes), var(--rainbow);
+  background-size: 300%, 200%;
+  background-position: 50% 50%, 50% 50%;
+
+  filter: blur(10px) invert(100%) opacity(80%);
+  mask-image: radial-gradient(ellipse at 100% 0%, black 40%, transparent 70%);
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--stripes), var(--rainbow);
+    background-size: 200%, 100%;
+    animation: smoothBg 60s linear infinite;
+    background-attachment: fixed;
+    mix-blend-mode: difference;
+  }
+}
+
+:has(:checked) {
+  --stripe-color: #0a2463; /* yale_blue-900 */
+}
+
+:has(:checked) .hero,
+:has(:checked) .hero::after {
+  filter: blur(10px) opacity(70%) saturate(150%);
+}
+
+.content {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  flex-flow: column;
+  gap: 4.5%;
+  text-align: center;
+  mix-blend-mode: difference;
+  -webbkit-mix-blend-mode: difference;
+  filter: invert(1);
+}
+
+.h1--scalingSize {
+  font-size: calc(1rem - -5vw);
+  position: relative;
+}
+
+#switch {
+  appearance: none;
+  -webkit-appearance: none;
+  opacity: 0;
+}
+
+[for="switch"] {
+  cursor: pointer;
+  transition: 0.15s linear(0 0%, 0.16 16.85%, 0.32 31.73%, 1 100%);
+  will-change: transform, font-weight;
+  padding: 0.5rem;
+}
+
+[for="switch"]:where(:hover, :active, :focus-within) {
+  /*transform: scale(1.2);
+    font-weight: 900;*/
+  transition: 0.3s ease;
+  animation: animSwitch 0.2s alternate;
+  & .icon {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes animSwitch {
+  50% {
+    transform: scale(1.2);
+    font-weight: 900;
+  }
+}
+
+/*icon houdini*/
+.icon {
+  width: 1lh;
+  height: 1lh;
+  aspect-ratio: 1/1;
+  padding: 0.25em 0.35rem;
+  border-radius: calc(1px / 0);
+  border: 1px dashed;
+  --blink-opacity: 1;
+  animation: blink-animation 2s ease-in-out infinite running;
+}
+
+/*challenge*/
+.h1--scalingSize::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: white;
+  text-shadow: 0 0 1px #ffffff;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: white;
+  -webkit-mask: linear-gradient(#000 0 0) luminance;
+  mask: linear-gradient(#000 0 0) luminance, alpha;
+  backdrop-filter: blur(19px) brightness(12.5);
+  -webkit-text-stroke: 1px white;
+  display: flex;
+  margin: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+/*---break---*/
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
