@@ -215,7 +215,7 @@ export default function ForAuthours() {
           {services.map((service, index) => (
             <div
               key={`service-${index}`}
-              className="rounded-lg [@media(min-width:1540px)]:p-10 p-6 shadow-sm border-[2px] border-gray-200
+              className="rounded-lg  p-4 shadow-sm border-[2px] border-gray-200
                 transition-all duration-500 hover:shadow-2xl hover:-translate-y-1
                 bg-white hover:border-gray-400 hover:shadow-blue-100/50
                 group focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2"
@@ -238,14 +238,14 @@ export default function ForAuthours() {
                 </div>
   
                 <h3
-                  className="text-[20px]  font-semibold
+                  className="text-[18px]  font-semibold
                   text-[#272727]"
                 >
                   {service.title}
                 </h3>
               </div>
               <p
-                className="leading-relaxed text-base md:text-lg
+                className="leading-relaxed text-base 
                 text-[#49648E] "
               >
                 {service.description}

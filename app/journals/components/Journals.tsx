@@ -276,10 +276,10 @@ export default function ScientificJournals() {
           {journals.map((journal, index) => (
             <div
               key={index}
-              className=" max-w-[160px] flex flex-col items-center  "
+              className=" max-w-[220px] flex flex-col items-center  "
             >
               {/* Journal Cover */}
-              <div className="relative min-w-full  h-58 mb-4 ">
+              <div className="relative min-w-full   h-76 mb-4 ">
                 <img
                   src={`/${journal.image}`}
                   alt={`Cover of ${journal.title}`}

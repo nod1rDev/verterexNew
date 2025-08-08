@@ -146,7 +146,7 @@ export default function AboutUs() {
               <h3 className="text-2xl md:text-4xl font-bold text-[#283E61] mb-6">
                 Who We Are
               </h3>
-              <div className="space-y-4 text-[#283E61] opacity-[80%]  text-[0.9rem] leading-relaxed">
+              <div className="space-y-4 text-[#283E61] opacity-[90%]  text-[0.9rem] leading-relaxed">
                 <p>
                   <span className="font-semibold text-[#283E61]">
                     SR Publishing House

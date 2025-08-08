@@ -25,13 +25,13 @@ function HomePage() {
             <ScientificJournals />
           </div>
         </section>
-        <InnovativeSolutions />
+       
         <section id="for-authours" className="bg-[#EDF1F9]">
           <div className="max-w-[85%] mx-auto">
             <Component />
           </div>
         </section>
-        <CallToAction />
+       
         <section id="news" className="bg-[#EDF1F9]">
           <div className="max-w-[90%] mx-auto">
             <NewsSection />

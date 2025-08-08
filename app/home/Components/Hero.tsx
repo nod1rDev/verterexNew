@@ -1,80 +1,205 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
 
-function Hero() {
+import { motion } from "framer-motion";
+import { Pacifico } from "next/font/google";
+import { Atom } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const pacifico = Pacifico({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-pacifico",
+});
+
+function ElegantShape({
+  className,
+  delay = 0,
+  width = 400,
+  height = 100,
+  rotate = 0,
+  gradient = "from-[#283e61]/[0.12]",
+}: {
+  className?: string;
+  delay?: number;
+  width?: number;
+  height?: number;
+  rotate?: number;
+  gradient?: string;
+}) {
   return (
-    <section 
-      aria-label="Hero" 
-      className="relative min-h-[80vh] py-8 sm:py-12 md:py-16 lg:py-[12%] xl:py-[14%] bg-[#EDF1F9] overflow-hidden"
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: -150,
+        rotate: rotate - 15,
+      }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        rotate: rotate,
+      }}
+      transition={{
+        duration: 2.4,
+        delay,
+        ease: [0.23, 0.86, 0.39, 0.96],
+        opacity: { duration: 1.2 },
+      }}
+      className={cn("absolute", className)}
     >
-      <motion.img
-        initial={{ opacity: 0, x: -100 }}
-        animate={{ opacity: 0.2, x: 0 }}
-        transition={{ duration: 1 }}
-        src="/art2.png"
-        className="absolute bottom-[10%] left-0 object-cover w-1/2 md:w-auto opacity-10 sm:opacity-20"
-        alt="Decorative background element"
-      />
-      <motion.img
-        initial={{ opacity: 0, x: 100 }}
-        animate={{ opacity: 0.2, x: 0 }}
-        transition={{ duration: 1 }}
-        src="/art1.png"
-        className="absolute bottom-[10%] right-0 sm:right-[80px] object-cover w-1/2 md:w-auto opacity-10 sm:opacity-20"
-        alt="Decorative right background element"
-      />
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative z-10 w-11/12 sm:max-w-[747px] mx-auto text-[#283E61] px-4 sm:px-0"
+        animate={{
+          y: [0, 15, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "easeInOut",
+        }}
+        style={{
+          width,
+          height,
+        }}
+        className="relative"
       >
-        <motion.h1
-          initial={{ scale: 0.8 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] leading-tight sm:leading-[80px] text-center font-bold mb-4"
-        >
-          Scientific Results
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.5 }}
-          className="text-lg sm:text-2xl md:text-[32px] text-center leading-snug sm:leading-[32.16px] text-[#7A7A7B] mb-6 px-4 sm:px-0"
-        >
-          Open Access. Peer Reviewed. Global Knowledge.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="mx-auto flex flex-col sm:flex-row max-w-[420px] items-center gap-4 px-4 sm:px-0"
-        >
-          <Link href="#about" className="w-full sm:w-auto">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-[195px] h-[50px] sm:h-[67px] rounded-[40px] bg-[#D9D9D9] border border-[#D9D9D9] text-[#272727] text-base sm:text-xl md:text-[24px] font-[500] flex justify-center items-center transition-colors hover:bg-[#C5C5C5] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#D9D9D9]"
-            >
-              Learn more
-            </motion.button>
-          </Link>
-          <Link href="#journals" className="w-full sm:w-auto">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-[195px] h-[50px] sm:h-[67px] rounded-[40px] bg-[#283E61] border border-[#D9D9D9] text-[#FFFFFF] text-base sm:text-xl md:text-[24px] font-[500] flex justify-center items-center transition-colors hover:bg-[#1F304A] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#283E61]"
-            >
-              View Journals
-            </motion.button>
-          </Link>
-        </motion.div>
+        <div
+          className={cn(
+            "absolute inset-0 rounded-full",
+            "bg-gradient-to-r to-transparent",
+            gradient,
+            "backdrop-blur-[2px] border-2 border-[#283e61]/[0.15]",
+            "shadow-[0_8px_32px_0_rgba(40,62,97,0.1)]",
+            "after:absolute after:inset-0 after:rounded-full",
+            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(40,62,97,0.15),transparent_70%)]"
+          )}
+        />
       </motion.div>
-    </section>
+    </motion.div>
   );
 }
 
-export default Hero;
+export default function HeroGeometric({
+  badge = "SR Publishing House",
+  title1 = "Connecting Brilliant",
+  title2 = "Minds",
+}: {
+  badge?: string;
+  title1?: string;
+  title2?: string;
+}) {
+  const fadeUpVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        delay: 0.5 + i * 0.2,
+        ease: [0.25, 0.4, 0.25, 1],
+      },
+    }),
+  };
+
+  return (
+    <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#edf1f9]">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#283e61]/[0.08] via-transparent to-[#7c8aa0]/[0.05] blur-3xl" />
+
+      <div className="absolute inset-0 overflow-hidden">
+        <ElegantShape
+          delay={0.3}
+          width={600}
+          height={140}
+          rotate={12}
+          gradient="from-[#283e61]/[0.12]"
+          className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
+        />
+
+        <ElegantShape
+          delay={0.5}
+          width={500}
+          height={120}
+          rotate={-15}
+          gradient="from-[#7c8aa0]/[0.12]"
+          className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
+        />
+
+        <ElegantShape
+          delay={0.4}
+          width={300}
+          height={80}
+          rotate={-8}
+          gradient="from-[#283e61]/[0.10]"
+          className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
+        />
+
+        <ElegantShape
+          delay={0.6}
+          width={200}
+          height={60}
+          rotate={20}
+          gradient="from-[#7c8aa0]/[0.10]"
+          className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
+        />
+
+        <ElegantShape
+          delay={0.7}
+          width={150}
+          height={40}
+          rotate={-25}
+          gradient="from-[#dce0e7]/[0.15]"
+          className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
+        />
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 md:px-6">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            custom={0}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+            className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-[#eef2fa] border border-[#dce0e7] mb-8 md:mb-12"
+          >
+            <Atom className="w-4 h-4 text-[#283e61]" />
+            <span className="text-[12px] text-[#7c8aa0] tracking-wide">
+              {badge}
+            </span>
+          </motion.div>
+
+          <motion.div
+            custom={1}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <h1 className="text-4xl sm:text-6xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight">
+              <span className="text-[#283E61]">{title1}</span>
+              <br />
+              <span
+                className={cn(
+                  "bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 via-indigo-700 to-rose-500 ",
+                  pacifico.className
+                )}
+              >
+                {title2}
+              </span>
+            </h1>
+          </motion.div>
+
+          <motion.div
+            custom={2}
+            variants={fadeUpVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            <p className="text-base sm:text-lg md:text-xl text-black/60 mb-8 leading-relaxed font-light tracking-wide max-w-xl mx-auto px-4">
+              Trusted by scholars, innovators, and educators <br /> SR
+              Publishing House delivers insights that transform industries.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      <div className="absolute inset-0 bg-gradient-to-t from-[#edf1f9] via-transparent to-[#edf1f9]/80 pointer-events-none" />
+    </div>
+  );
+}
