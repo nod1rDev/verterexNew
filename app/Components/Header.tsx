@@ -28,7 +28,7 @@ export default function Header() {
   const [loading, setLoading] = useState(true);
   const [isClient, setIsClient] = useState(false);
   const [email, setEmail] = useState<string | null>(null);
-  const [selectedLanguage, setSelectedLanguage] = useState("UZ");
+  const [selectedLanguage, setSelectedLanguage] = useState("EN");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSectionId, setActiveSectionId] = useState<string | null>(null);
   const [username, setUsername] = useState("");
