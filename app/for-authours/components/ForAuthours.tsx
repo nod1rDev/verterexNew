@@ -229,10 +229,10 @@ export default function ForAuthours() {
               }}
               aria-label={`${service.title}: ${service.description}`}
             >
-              <div className="flex flex-col gap-2 mb-4">
-                <div className={`inline-flex items-center justify-center w-10 h-10  rounded-lg mb-2 ${service.color}`}>
+              <div className="flex flex-col gap-2">
+                <div className={`inline-flex items-center justify-center w-8 h-8  rounded-lg ${service.color}`}>
                   <service.icon
-                    className="w-5 h-5 "
+                    className="w-4 h-4 "
                     aria-hidden="true"
                   />
                 </div>
